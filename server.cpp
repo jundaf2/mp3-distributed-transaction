@@ -147,7 +147,7 @@ class Transactions{
             }
             else{ // an account is automatically created if it does not exist.
                 // insert
-                this->account_balance.emplace(make_pair(string(server_account), Balance(deposit_amount)));
+                this->account_balance.emplace(server_account, deposit_amount);
             }
             return true;
         }
