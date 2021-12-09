@@ -39,9 +39,9 @@ struct Balance{
         string read_lock_holder = "";
         string write_lock_holder = "";
     public:
-        Balance() = default;
-        ~Balance() = default;
-        explicit Balance(int am): amount(am){}
+        Balance(int am=0) {
+            amount = am;
+        }
         
         void roll_back(int tot_am, string client_id){
             int current_amount = this->amount;
@@ -147,7 +147,7 @@ class Transactions{
             }
             else{ // an account is automatically created if it does not exist.
                 // insert
-                this->account_balance.emplace(server_account, (int)deposit_amount);
+                this->account_balance.emplace(make_pair(string(server_account), Balance(deposit_amount)));
             }
             return true;
         }
