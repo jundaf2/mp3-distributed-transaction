@@ -43,6 +43,7 @@ class Balance{
     public:
         Balance(int am=0, int mtx_id=0) {
             amount = am;
+            mtx_id = mtx_id;
         }
         ~Balance(){
             rw_mutex[mtx_id].readUnLock();
