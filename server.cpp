@@ -32,7 +32,7 @@ vector<string> parse(string command, char delimiter = ' '){
 }
 
 
-struct Balance{
+class Balance{
     private:
         int amount = 0;
         rwlock::ReadWriteLock rw_mutex;
