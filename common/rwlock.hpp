@@ -18,7 +18,7 @@ namespace rwlock
             int reading = 0;
             int writing = 0;
             mutable std::mutex mx;
-            std::condition_variable cond;
+            mutable std::condition_variable cond;
         public:
             // default constructor
             ReadWriteLock() = default;
