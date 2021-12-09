@@ -17,16 +17,20 @@ namespace rwlock
             int writeWaiting = 0;
             int reading = 0;
             int writing = 0;
-            std::mutex mx;
+            mutable std::mutex mx;
             std::condition_variable cond;
         public:
+            // default constructor
             ReadWriteLock() = default;
             ~ReadWriteLock() = default;
-            ReadWriteLock(const ReadWriteLock &) = delete;
-            ReadWriteLock & operator=(const ReadWriteLock &) = delete;
 
-            ReadWriteLock(const ReadWriteLock &&) = delete;
-            ReadWriteLock & operator=(const ReadWriteLock &&) = delete;
+//            // copy ctor
+//            ReadWriteLock(const ReadWriteLock &) = delete;
+//            ReadWriteLock & operator=(const ReadWriteLock &) = delete;
+//
+//            // move ctor
+//            ReadWriteLock(const ReadWriteLock &&) = delete;
+//            ReadWriteLock & operator=(const ReadWriteLock &&) = delete;
 
 
 
