@@ -224,12 +224,12 @@ class Transactions{
             // All updates made during the transaction must be rolled back.
             if(this->client_transaction__account_amounts.count(client_id)>0){
                 for(auto acc_amt_pair:this->client_transaction__account_amounts[client_id]){
-//                    if(!(count(this->account_permanent.begin(), this->account_permanent.end(), acc_amt_pair.first)>0)){
-//                        this->account_balance.erase(acc_amt_pair.first);
-//                    }
-//                    else{
+                    if(!(count(this->account_permanent.begin(), this->account_permanent.end(), acc_amt_pair.first)>0)){
+                        this->account_balance.erase(acc_amt_pair.first);
+                    }
+                    else{
                         this->account_balance[acc_amt_pair.first].roll_back(acc_amt_pair.second,client_id);
-//                    }
+                    }
                 }
             }
             else{
