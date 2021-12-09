@@ -1,0 +1,17 @@
+/home/ubuntu/Desktop/clion-2021.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Error at CMakeLists.txt:20 (target_link_libraries):
+  Cannot specify link libraries for target "client" which is not built by
+  this project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeError.log".

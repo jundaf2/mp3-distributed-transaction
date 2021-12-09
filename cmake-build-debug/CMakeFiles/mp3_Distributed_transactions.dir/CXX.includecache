@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/main.cpp
+iostream
+-
+string
+-
+vector
+-
+array
+-
+deque
+-
+thread
+-
+mutex
+-
+chrono
+-
+cstdlib
+-
+unistd.h
+-
+

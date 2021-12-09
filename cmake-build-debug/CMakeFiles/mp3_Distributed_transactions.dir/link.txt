@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/mp3_Distributed_transactions.dir/main.cpp.o -o mp3_Distributed_transactions 

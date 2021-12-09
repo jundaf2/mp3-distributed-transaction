@@ -1,0 +1,73 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_4d44b/fast && make[1]: Entering directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'Makefile' has modification time 0.24 s in the future
+/usr/bin/make  -f CMakeFiles/cmTC_4d44b.dir/build.make CMakeFiles/cmTC_4d44b.dir/build
+make[2]: Entering directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[2]: Warning: File 'CMakeFiles/cmTC_4d44b.dir/flags.make' has modification time 0.18 s in the future
+Building C object CMakeFiles/cmTC_4d44b.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_4d44b.dir/src.c.o -c /mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_4d44b
+/home/ubuntu/Desktop/clion-2021.2.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d44b.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_4d44b.dir/src.c.o -o cmTC_4d44b 
+CMakeFiles/cmTC_4d44b.dir/src.c.o: In function `main':
+src.c:(.text+0x3e): undefined reference to `pthread_create'
+src.c:(.text+0x4a): undefined reference to `pthread_detach'
+src.c:(.text+0x56): undefined reference to `pthread_cancel'
+src.c:(.text+0x67): undefined reference to `pthread_join'
+src.c:(.text+0x7b): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_4d44b.dir/build.make:98: recipe for target 'cmTC_4d44b' failed
+make[2]: *** [cmTC_4d44b] Error 1
+make[2]: Leaving directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_4d44b/fast' failed
+make[1]: *** [cmTC_4d44b/fast] Error 2
+make[1]: Leaving directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_95bab/fast && make[1]: Entering directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'Makefile' has modification time 0.7 s in the future
+/usr/bin/make  -f CMakeFiles/cmTC_95bab.dir/build.make CMakeFiles/cmTC_95bab.dir/build
+make[2]: Entering directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[2]: Warning: File 'CMakeFiles/cmTC_95bab.dir/flags.make' has modification time 0.66 s in the future
+Building C object CMakeFiles/cmTC_95bab.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_95bab.dir/CheckFunctionExists.c.o -c /home/ubuntu/Desktop/clion-2021.2.1/bin/cmake/linux/share/cmake-3.20/Modules/CheckFunctionExists.c
+Linking C executable cmTC_95bab
+/home/ubuntu/Desktop/clion-2021.2.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95bab.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_95bab.dir/CheckFunctionExists.c.o -o cmTC_95bab  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_95bab.dir/build.make:98: recipe for target 'cmTC_95bab' failed
+make[2]: *** [cmTC_95bab] Error 1
+make[2]: Leaving directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_95bab/fast' failed
+make[1]: *** [cmTC_95bab/fast] Error 2
+make[1]: Leaving directory '/mnt/hgfs/VMware_share_file/CS425_DS_CPP/mp3-Distributed-transactions/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
