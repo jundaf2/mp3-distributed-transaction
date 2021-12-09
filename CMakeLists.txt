@@ -12,8 +12,10 @@ macro(use_cxx11)
 endmacro(use_cxx11)
 set(VERBOSE_BUILD ON)
 use_cxx11()
-add_executable(client client.cpp message_base.h)
-add_executable(server server.cpp message_base.h)
+
+
+add_executable(client client.cpp message_base.h ./common/json.hpp)
+add_executable(server server.cpp message_base.h ./common/json.hpp ./common/rwlock.hpp)
 
 find_package(Threads REQUIRED)
 if(THREADS_HAVE_PTHREAD_ARG)
