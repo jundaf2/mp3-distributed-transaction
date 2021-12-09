@@ -41,9 +41,9 @@ class Balance{
         int amount;
         int mtx_id;
     public:
-        Balance(int am=0, int mtx_id=0) {
-            amount = am;
-            mtx_id = mtx_id;
+        Balance(int am=0, int mtx_id_=0) {
+            this->amount = am;
+            this->mtx_id = mtx_id_;
         }
         ~Balance(){
             rw_mutex[mtx_id].readUnLock();
