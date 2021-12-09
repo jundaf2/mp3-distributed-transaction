@@ -12,7 +12,7 @@
 #include <map>
 #include "message_base.h"
 #include "common/json.hpp"
-#define NUM_SERVERS 2
+#define NUM_SERVERS 5
 using namespace std;
 using json = nlohmann::json;
 
