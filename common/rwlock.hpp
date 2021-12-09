@@ -22,6 +22,13 @@ namespace rwlock
         public:
             ReadWriteLock() = default;
             ~ReadWriteLock() = default;
+            ReadWriteLock(const ReadWriteLock &) = delete;
+            ReadWriteLock & operator=(const ReadWriteLock &) = delete;
+
+            ReadWriteLock(const ReadWriteLock &&) = delete;
+            ReadWriteLock & operator=(const ReadWriteLock &&) = delete;
+
+
 
             void readLock() {
                 std::unique_lock<std::mutex>lock(mx);
