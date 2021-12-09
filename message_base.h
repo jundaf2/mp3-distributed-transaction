@@ -32,7 +32,7 @@ using json = nlohmann::json;
 using namespace std;
 
 void DEBUG_INFO(string info){
-    cout << "\x1b[34m" << info << "\x1b[0m" << endl;
+    //cout << "\x1b[34m" << info << "\x1b[0m" << endl;
 }
 
 #include <string>
