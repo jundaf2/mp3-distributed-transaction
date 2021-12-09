@@ -42,6 +42,10 @@ struct Balance{
         Balance(int am=0) {
             amount = am;
         }
+        ~Balance(){
+            rw_mutex.readUnLock();
+            rw_mutex.writeUnLock();
+        }
         
         void roll_back(int tot_am, string client_id){
             int current_amount = this->amount;
