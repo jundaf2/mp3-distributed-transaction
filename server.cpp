@@ -40,9 +40,7 @@ struct Balance{
         string write_lock_holder = "";
     public:
         Balance() = default;
-        Balance(int am): amount(am){
-
-        }
+        explicit Balance(int am): amount(am){}
         
         void roll_back(int tot_am, string client_id){
             int current_amount = this->amount;
@@ -144,7 +142,7 @@ class Transactions{
             }
 
             if(this->account_balance.count(server_account)>0 && deposit_amount>0){
-                this->account_balance[server_account].increase(deposit_amount,client_id);
+                this->account_balance.at(server_account).increase(deposit_amount,client_id);
             }
             else{ // an account is automatically created if it does not exist.
                 // insert

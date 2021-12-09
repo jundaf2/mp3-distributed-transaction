@@ -20,7 +20,8 @@ namespace rwlock
             std::mutex mx;
             std::condition_variable cond;
         public:
-            ReadWriteLock() {};
+            ReadWriteLock() = default;
+            ~ReadWriteLock() = default;
 
             void readLock() {
                 std::unique_lock<std::mutex>lock(mx);
