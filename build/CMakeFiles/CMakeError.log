@@ -1,0 +1,53 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2735091412/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2735091412.dir/build.make CMakeFiles/cmTryCompileExec2735091412.dir/build
+gmake[1]: Entering directory `/home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2735091412.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2735091412.dir/CheckSymbolExists.c.o   -c /home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec2735091412
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2735091412.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2735091412.dir/CheckSymbolExists.c.o  -o cmTryCompileExec2735091412 -rdynamic 
+CMakeFiles/cmTryCompileExec2735091412.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: Leaving directory `/home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec2735091412] Error 1
+gmake: *** [cmTryCompileExec2735091412/fast] Error 2
+
+File /home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1980384777/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1980384777.dir/build.make CMakeFiles/cmTryCompileExec1980384777.dir/build
+gmake[1]: Entering directory `/home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1980384777.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1980384777.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1980384777
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1980384777.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec1980384777.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1980384777 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+gmake[1]: Leaving directory `/home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec1980384777] Error 1
+gmake: *** [cmTryCompileExec1980384777/fast] Error 2
+
+

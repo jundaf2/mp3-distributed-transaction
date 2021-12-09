@@ -1,0 +1,2 @@
+/home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/client.dir
+/home/jundaf2/mp3-distributed-transaction/build/CMakeFiles/server.dir

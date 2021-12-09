@@ -1,5 +1,0 @@
-A fa21-cs425-g59-01.cs.illinois.edu 1234
-B fa21-cs425-g59-02.cs.illinois.edu 1234
-C fa21-cs425-g59-03.cs.illinois.edu 1234
-D fa21-cs425-g59-04.cs.illinois.edu 1234
-E fa21-cs425-g59-05.cs.illinois.edu 1234
