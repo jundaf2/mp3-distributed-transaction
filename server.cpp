@@ -32,19 +32,21 @@ vector<string> parse(string command, char delimiter = ' '){
 }
 
 
+rwlock::ReadWriteLock rw_mutex[1000];
+string read_lock_holder[1000];
+string write_lock_holder[1000];
+
 class Balance{
     private:
-        int amount = 0;
-        rwlock::ReadWriteLock rw_mutex;
-        string read_lock_holder = "";
-        string write_lock_holder = "";
+        int amount;
+        int mtx_id;
     public:
-        Balance(int am=0) {
+        Balance(int am=0, int mtx_id=0) {
             amount = am;
         }
         ~Balance(){
-            rw_mutex.readUnLock();
-            rw_mutex.writeUnLock();
+            rw_mutex[mtx_id].readUnLock();
+            rw_mutex[mtx_id].writeUnLock();
         }
         
         void roll_back(int tot_am, string client_id){
@@ -55,9 +57,9 @@ class Balance{
         }
 
         void increase(int am, string client_id){
-            if(this->write_lock_holder != client_id){
-                rw_mutex.writeLock();
-                this->write_lock_holder = client_id;
+            if(write_lock_holder[mtx_id] != client_id){
+                rw_mutex[mtx_id].writeLock();
+                write_lock_holder[mtx_id] = client_id;
             }
             int current_amount = this->amount;
             DEBUG_INFO("READ SUCCESS");
@@ -66,9 +68,9 @@ class Balance{
         }
 
         void decrease(int am, string client_id){
-            if(this->write_lock_holder != client_id){
-                rw_mutex.writeLock();
-                this->write_lock_holder = client_id;
+            if(write_lock_holder[mtx_id] != client_id){
+                rw_mutex[mtx_id].writeLock();
+                write_lock_holder[mtx_id] = client_id;
             }
             int current_amount = this->amount;
             this->amount = current_amount - am;
@@ -85,8 +87,8 @@ class Balance{
         }
 
         int getAmount(string client_id){ // for client read
-            if(this->write_lock_holder != client_id){
-                rw_mutex.readLock();
+            if(write_lock_holder[mtx_id] != client_id){
+                rw_mutex[mtx_id].readLock();
             }
             return this->amount;
         }
@@ -96,16 +98,17 @@ class Balance{
         }
 
         void release_locks(){
-            this->read_lock_holder = "";
-            this->write_lock_holder = "";
-            rw_mutex.writeUnLock();
-            rw_mutex.readUnLock();
+            read_lock_holder[mtx_id] = "";
+            write_lock_holder[mtx_id] = "";
+            rw_mutex[mtx_id].writeUnLock();
+            rw_mutex[mtx_id].readUnLock();
         }
 };
 
 // A transaction should see its own tentative updates
 class Transactions{
     private:
+        int num_accounts = 0;
         map<string, Balance> account_balance;
         vector<string> account_permanent;
         map<string, map<string,int>> client_transaction__account_amounts;
@@ -151,7 +154,7 @@ class Transactions{
             }
             else{ // an account is automatically created if it does not exist.
                 // insert
-                this->account_balance.emplace(server_account, deposit_amount);
+                this->account_balance.emplace(server_account, Balance(deposit_amount,this->num_accounts++));
             }
             return true;
         }

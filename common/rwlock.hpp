@@ -28,9 +28,11 @@ namespace rwlock
 //            ReadWriteLock(const ReadWriteLock &) = delete;
 //            ReadWriteLock & operator=(const ReadWriteLock &) = delete;
 //
-//            // move ctor
-//            ReadWriteLock(const ReadWriteLock &&) = delete;
-//            ReadWriteLock & operator=(const ReadWriteLock &&) = delete;
+            // move ctor
+            ReadWriteLock(const ReadWriteLock &&){
+
+            }
+            ReadWriteLock & operator=(const ReadWriteLock &&) = delete;
 
 
 
